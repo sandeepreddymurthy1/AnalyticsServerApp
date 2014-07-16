@@ -1,0 +1,22 @@
+ .field-margin {
+        margin: 10px;
+}
+#bodyPanel{
+	width : 100%;
+	min-width : 900px;
+	height : 100%;
+	min-height : 900px;
+	text-align:left;
+	border : 0px;
+	padding : 0;
+	margin :0 auto;
+}
+.logInClass
+{
+
+	text-align:right;
+	font-size : 15px;
+	top : 5px;
+	left-margin : 40px;
+	margin : 10 10 10 10
+}

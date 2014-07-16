@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<description>
+		This context will be included in all shared applications
+	</description>
+
+
+	<!-- Utility for applciation context -->
+
+	<bean id="daoParent" class="com.webanalytics.web.dao.BaseDao">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="adminDao" parent="daoParent"
+		class="com.webanalytics.web.dao.admin.AdminDao">
+
+	</bean>
+	
+	<bean id="configurationDao" parent="daoParent"
+		class="com.webanalytics.web.dao.ConfigurationDao">
+
+	</bean>
+	
+	<bean id="appDataDao" parent="daoParent"
+		class="com.webanalytics.web.dao.AppDataDao">
+
+	</bean>
+	
+	<bean id="enumDao" parent="daoParent"
+		class="com.webanalytics.web.dao.EnumDao">
+
+	</bean>
+	
+	<bean id="reportDao" parent="daoParent"
+		class="com.webanalytics.web.dao.ReportDao">
+
+	</bean>
+	
+	<bean id="cityDao" parent="daoParent"
+		class="com.webanalytics.web.dao.CityDao">
+
+	</bean>
+
+	
+	<!-- Hbase Dao -->
+	
+	<bean id="pageHitSummaryDao" 
+		class="com.webanalytics.hbase.dao.PageHitSummaryDao">
+
+	</bean>
+	
+	<bean id="browserSummaryDao" 
+		class="com.webanalytics.hbase.dao.BrowserSummaryDao">
+
+	</bean>
+	
+	<bean id="locationSummaryDao" 
+		class="com.webanalytics.hbase.dao.LocationSummaryDao">
+
+	</bean>
+	
+	<bean id="osSummaryDao" 
+		class="com.webanalytics.hbase.dao.OSSummaryDao">
+
+	</bean>
+	
+</beans>

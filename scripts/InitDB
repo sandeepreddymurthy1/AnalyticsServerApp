@@ -1,0 +1,82 @@
+delimiter $$
+
+CREATE  TABLE IF NOT EXISTS `MemberInfo` (
+   id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NOT NULL ,
+  `password` VARCHAR(45) NOT NULL ,
+  `appId` INT NOT NULL ,
+  `xml` LONGTEXT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
+ENGINE = InnoDB$$
+
+
+ALTER TABLE MemberInfo AUTO_INCREMENT=11000$$
+
+
+CREATE  TABLE IF NOT EXISTS `AppInfo` (
+   id MEDIUMINT NOT NULL AUTO_INCREMENT,
+   `registeredEmail` VARCHAR(45) NOT NULL,
+  `xmlData` LONGTEXT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+ENGINE = InnoDB$$
+
+
+ALTER TABLE MemberInfo AUTO_INCREMENT=11000$$
+
+CREATE  TABLE IF NOT EXISTS `ConfigEnum` (
+   id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `configType` VARCHAR(45) NULL ,
+  `configDescription` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB$$
+
+ALTER TABLE ConfigEnum AUTO_INCREMENT=1$$
+
+CREATE  TABLE IF NOT EXISTS `ReportEnum` (
+   id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `configEnumType` VARCHAR(45) NULL ,
+  `reportType` VARCHAR(45) NULL ,
+  `reportDescription` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB$$
+
+ALTER TABLE ReportEnum AUTO_INCREMENT=1$$
+
+
+CREATE  TABLE IF NOT EXISTS `Configuration` (
+   id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `configEnumId` VARCHAR(45) NOT NULL ,
+  `appId` INT NOT NULL ,
+  `xmlData` LONGTEXT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB$$
+
+ALTER TABLE Configuration AUTO_INCREMENT=10$$
+
+
+CREATE  TABLE IF NOT EXISTS `Report` (
+  id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `configId` INT NOT NULL ,
+  `xmlData` LONGTEXT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB$$
+
+ALTER TABLE Report AUTO_INCREMENT=10$$
+
+CREATE TABLE `cityByCountry` (
+  `city` int(11) NOT NULL auto_increment,
+  `country` int(11) NOT NULL default '0',
+  `name` varchar(200) NOT NULL default '',
+  `lat` float default NULL,
+  `lng` float default NULL,
+  `state` varchar(64) NOT NULL default '',
+  PRIMARY KEY  (`city`),
+  KEY `kCountry` (`country`),
+  KEY `kName` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=40311 DEFAULT CHARSET=latin1$$
+
+
+
+

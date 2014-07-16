@@ -1,0 +1,63 @@
+<project name="Web" default="all">
+
+	<property name="propsfile" value="local" />
+	<property file="${propsfile}.build.properties" />
+	<!-- all apps properties file -->
+	<property file="../../${propsfile}.build.properties" />
+
+
+	<property name="debug" value="true" />
+
+
+	<property name="app.name" value="webanalyticsWebConsole" />
+	<property name="app.version" value="default_version" />
+
+	<property name="src.dir" value="../src" />
+	<property name="build.dir" value="../build" />
+	<property name="shared.lib.dir" value="../WebContent/WEB-INF/lib" />
+	<property name="jar.file.name" value="${app.name}.jar" />
+	<property name="war.file.name" value="${app.name}.war" />
+
+
+	<target name="all" depends="clean,compile,createWar" />
+	<path id="server.classpath">
+		    <fileset dir="/home/cloudera/Downloads/apache-tomcat-7.0.42/lib">
+		        <include name="*.jar"/>
+		    </fileset>
+	</path>
+	<path id="lib.classpath">
+			    <fileset dir="${shared.lib.dir}">
+			        <include name="*.jar"/>
+			    </fileset>
+		</path>
+	
+	<target name="compile">
+		<javac srcdir="${src.dir}" destdir="${build.dir}/classes" debug="${debug}">
+
+			<include name="**/**/*.java" />
+			<classpath refid="server.classpath"/>
+			<classpath refid="lib.classpath"/>
+			<classpath>
+				<pathelement location="${build.dir}/classes" />
+			</classpath>
+		</javac>
+	</target>
+
+	
+	
+	<target name="createWar" depends="compile">
+		<war destfile="${war.file.name}" webxml="../WebContent/WEB-INF/web.xml">
+			<fileset dir="../WebContent" />
+			<classes dir="${build.dir}/classes" />
+			<lib dir="../WebContent/WEB-INF/lib">
+			</lib>
+		</war>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}/classes" />
+	</target>
+
+</project>

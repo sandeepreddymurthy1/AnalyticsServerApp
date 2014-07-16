@@ -1,0 +1,18 @@
+INSERT INTO ConfigEnum (configType,configDescription) VALUES
+    ('webAnalytics','Web Analytics'),('mobileAnlaytics','Mobile Analytics'),('fileAnalytics','File Analytics'),
+    ('webserviceAnalytics','Web Service Analytics');
+    
+
+INSERT INTO ReportEnum (configEnumType,reportType,reportDescription) VALUES
+    ('webAnalytics','siteRelativeUsage','Site Relative Usage'),
+     ('webAnalytics','osUsage','Operating Usage'),
+      ('webAnalytics','browserUsage','Browser Usage'),
+    ('webAnalytics','uniqueVisits','Unique Visits'),
+    ('webAnalytics','overallVisits','Overall Visits'),
+     ('webAnalytics','currentUsers','Current Users'), 
+    ('webAnalytics','locationVisit','Location Visits'),
+    ('webAnalytics','topVisitCities','Top Visit Cities'),
+    ('webAnalytics','socialReference','Social Site Referers'),
+    ('webAnalytics','referralReport','Overall Referer');
+    
+ 
